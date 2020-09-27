@@ -4,7 +4,7 @@ Many synthetic time series datasets are based on uniform or normal random number
 
 The code as shared here is configured to do the following:
 
-* Generate 2.5 billion rows of true auto-regressive time-series data based on stochastic processes with white noise. 
+* Generate 2.5 billion rows of true auto-regressive time-series data based on stochastic processes with white noise based error. 
 
 * Instantiating a ClickHouse environment running CentOS 7.5 to query the data.
 
@@ -50,3 +50,7 @@ You will need an existing AWS account, a default VPC with internet access, a fun
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
+## Citations
+
+*Synthetic Time Series - J. R. Maat, A. Malali, and P. Protopapas, “TimeSynth: A Multipurpose Library for Synthetic Time Series in Python,” 2017. [Online].*
+Available: http://github.com/TimeSynth/TimeSynth
