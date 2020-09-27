@@ -37,11 +37,11 @@ You will need an existing AWS account, a default VPC with internet access, a fun
 2. The only import we need is boto3 for now. You can pip install the requirements.txt which is overkill for this stage, or just pip install boto3. Ensure you are using pip for Python 3 and are targeting your python 3 environment. For me, this required the following ``` pip3 install --upgrade pip && pip3 install boto3 ```
 2. Create secrets.txt with your relevant account in the root of the repo. 2 lines only, first line is your account key, the second line is your secret.
 3. Update launch-ec2.py with your relevant information (there are account / region specific settings, this will not work out of the box.
-4. execute the launch-ec2.py script and capture the output IP address of the ec2 instance. ```python3 launch-ec2.py```
+4. Execute the launch-ec2.py script and capture the output IP address of the ec2 instance. ```python3 launch-ec2.py```
 5. ssh into the instance (note that the user will be "centos" unless a different AMI was chosen.) ``` ssh -i path-to-pem-file/your.pem centos@your-instance-ip```
 6. cd to /mnt/md0 and clone this repo once more (__note__: it may take 10+ minutes for the userdata script to fully execute. Please wait for md0 to appear.) ```git clone https://github.com/namebrandon/time-series-gen.git```
-7. install all pip requirements / ```cd time-series-gen/ && pip3 install -r requirements.txt```
-8. using nano or another editor, make any changes needed to gen.py (by default it will generate 2.5 billion rows of data using 96 cores. This will take ~6 hours)
+7. Install all pip requirements / ```cd time-series-gen/ && pip3 install -r requirements.txt```
+8. Using nano or another editor, make any changes needed to gen.py (by default it will generate 2.5 billion rows of data using 96 cores. This will take ~6 hours)
 9. Launch a screen session (optional, but suggested) and execute gen.py and wait. Data is in data/ in .csv format. ```screen -dm bash -c 'python3 gen.py; exec sh'``` (For those of you unfamiliar with screen, ```screen -r``` will reattach you to that session, and once in the session, CTRL+A D will disconnect you. If you have multiple screen sessions, ```screen -list``` will enumerate them all.)
 
 
@@ -50,11 +50,11 @@ You will need an existing AWS account, a default VPC with internet access, a fun
 2. Copy the config override to point ClickHouse storage to raid 0 array / ```sudo cp time-series.conf /etc/clickhouse-server/conf.d/```
 3. Restart ClickHouse server - ```sudo service clickhouse-server restart```
 You should see a message about a new ClickHouse data directory being created.
-4. launch the ClickHouse client to validate the install ( ```clickhouse-client ```). Assuming you were launched into the SQL client, "exit" back to the shell prompt. 
+4. Launch the ClickHouse client to validate the install ( ```clickhouse-client ```). Assuming you were launched into the SQL client, "exit" back to the shell prompt. 
 5. `````./create-db.sh`````
 6. Launch a screen session (again, optional but suggested)
 7. `````screen -dm bash -c './load-data.sh; exec sh'`````
-5. Wait
+5. Wait for loading to complete. Loading is relatively quick, it should take less than 35 minutes for all 2.5 billion rows to load.
 
 ### Query
 1. From your bash prompt - ```clickhouse-client```
