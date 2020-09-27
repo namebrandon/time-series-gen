@@ -6,7 +6,7 @@ The code as shared here is configured to do the following:
 
 * Generate 2.5 billion rows of true auto-regressive time-series data based on stochastic processes with white noise based error. 
 
-* Instantiating a ClickHouse environment running CentOS 7.5 to query the data.
+* Instantiate an AWS-based ClickHouse environment running CentOS 7.5 to query the data.
 
 ## Notes
 
