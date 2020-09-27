@@ -37,21 +37,28 @@ You will need an existing AWS account, a default VPC with internet access, a fun
 4. execute the launch-ec2.py script and capture the output IP address of the ec2 instance. ```python3 launch-ec2.py```
 5. ssh into the instance (note that the user will be "centos" unless a different AMI was chosen.) ``` ssh -i path-to-pem-file/your.pem centos@your-instance-ip```
 6. cd to /mnt/md0 and clone this repo once more (__note__: it may take 10+ minutes for the userdata script to fully execute. Please wait for md0 to appear.) ```git clone https://github.com/namebrandon/time-series-gen.git```
-7. install all pip requirements / ```pip3 install -r requirements.txt```
-8. using nano or another editor, make any changes needed to gen.py
-9. Launch a screen session (optional, but suggested) and execute gen.py ( python3 gen.py ) and wait. Data is in data/ in .csv format.
+7. install all pip requirements / ```cd time-series-gen/ && pip3 install -r requirements.txt```
+8. using nano or another editor, make any changes needed to gen.py ```screen -dm bash -c 'python3 gen.py; exec sh'```
+9. Launch a screen session (optional, but suggested) and execute gen.py and wait. Data is in data/ in .csv format. screen
 
 ### Data Import
-1. chmod +x create-db.sh and load-data.sh
-2. Copy the config override to point clickhouse storage to raid 0 array / ```sudo cp time-series.conf /etc/clickhouse-server/conf.d/```
-3. Restart clickhouse server - ```sudo service clickhouse-server restart```
+1. From the repo root directory ```chmod +x *.sh```
+2. Copy the config override to point ClickHouse storage to raid 0 array / ```sudo cp time-series.conf /etc/clickhouse-server/conf.d/```
+3. Restart ClickHouse server - ```sudo service clickhouse-server restart```
+You should see a message about a new ClickHouse data directory being created.
 4. launch the ClickHouse client to validate the install (clickhouse-client). Assuming you were launched into the SQL client, "exit" back to the shell prompt. 
 5. `````./create-db.sh`````
 6. Launch a screen session (again, optional but suggested)
 7. `````./load-data.sh`````
 5. Wait
 
-## Contributing
+### Query
+1. From your bash prompt - ```clickhouse-client```
+2. Validate data is present ```SELECT COUNT(*) FROM perftest.exchange_data;```
+
+## Contributing / Issues
+For issues, please open a GitHub issue with as much detail as you can provide. I'll support this as best I can, but I make no promises. Please don't email me directly.
+
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 ## Citations
