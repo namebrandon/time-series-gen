@@ -31,7 +31,7 @@ You will need an existing AWS account, a default VPC with internet access, a fun
 *Important* - The user data script in launch-ec2.py will assume you have two local NVME disks and will create an RAID 0 array. Unless you know how to configure this for your instance types, it is suggested you stay within the c5ad family of ec2 instance types. 
 
 ### Data Generation Stage
-1. Clone the repo
+1. Clone the repo ```git clone https://github.com/namebrandon/time-series-gen.git```
 2. Create secrets.txt with your relevant account in the root of the repo
 3. Update launch-ec2.py with your relevant information (there are account / region specific settings, this will not work out of the box.
 4. execute the launch-ec2.py script and capture the output IP address of the ec2 instance. ```python3 launch-ec2.py```
