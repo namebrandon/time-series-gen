@@ -35,7 +35,7 @@ You will need an existing AWS account, a default VPC with internet access, a fun
 2. Create secrets.txt with your relevant account in the root of the repo
 3. Update launch-ec2.py with your relevant information (there are account / region specific settings, this will not work out of the box.
 4. execute the launch-ec2.py script and capture the output IP address of the ec2 instance.
-5. ssh into the instance (note that the user will be "centos" unless a different AMI was chosen.
+5. ssh into the instance (note that the user will be "centos" unless a different AMI was chosen.)
 6. cd to /mnt/md0 and clone this repo once more (note that it may take 10+ minutes for the userdata script to fully execute. Please wait for md0 to apepar.)
 7. install all pip requirements / pip3 install -r requirements.txt
 8. using nano or another editor, make any changes needed to gen.py
