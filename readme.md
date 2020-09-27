@@ -42,7 +42,7 @@ You will need an existing AWS account, a default VPC with internet access, a fun
 6. cd to /mnt/md0 and clone this repo once more (__note__: it may take 10+ minutes for the userdata script to fully execute. Please wait for md0 to appear.) ```git clone https://github.com/namebrandon/time-series-gen.git```
 7. install all pip requirements / ```cd time-series-gen/ && pip3 install -r requirements.txt```
 8. using nano or another editor, make any changes needed to gen.py (by default it will generate 2.5 billion rows of data using 96 cores. This will take ~6 hours)
-9. Launch a screen session (optional, but suggested) and execute gen.py and wait. Data is in data/ in .csv format. ```screen -dm bash -c 'python3 gen.py; exec sh'```
+9. Launch a screen session (optional, but suggested) and execute gen.py and wait. Data is in data/ in .csv format. ```screen -dm bash -c 'python3 gen.py; exec sh'``` (For those of you unfamiliar with screen, ```screen -r``` will reattach you to that session, and once in the session, CTRL+A D will disconnect you. If you have multiple screen sessions, ```screen -list``` will enumerate them all.)
 
 
 ### Data Import
