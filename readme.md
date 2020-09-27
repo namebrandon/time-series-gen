@@ -36,8 +36,9 @@ You will need an existing AWS account, a default VPC with internet access, a fun
 4. execute the launch-ec2.py script and capture the output IP address of the ec2 instance.
 5. ssh into the instance (note that the user will be "centos" unless a different AMI was chosen.
 6. cd to /mnt/md0 and clone this repo once more (note that it may take 10+ minutes for the userdata script to fully execute. Please wait for md0 to apepar.)
-7. using nano or another editor, make any changes needed to gen.py
-8. Launch a screen session (optional, but suggested) and execute gen.py and wait. Data is in data/ in .csv format.
+7. install all pip requirements / pip3 install -r requirements.txt
+8. using nano or another editor, make any changes needed to gen.py
+9. Launch a screen session (optional, but suggested) and execute gen.py ( python3 gen.py ) and wait. Data is in data/ in .csv format.
 
 ### Data Import
 1. chmod +x create-db.sh and load-data.sh
