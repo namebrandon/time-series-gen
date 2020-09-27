@@ -1,6 +1,6 @@
-# Synthetic Time-Series Testing with ClickHouse 
+# Synthetic Time Series Testing with ClickHouse 
 
-Many synthetic time-series datasets are based on uniform or normal random number generation that creates data that is independent and identically distributed. This is not necessarily a characteristic that is found in many time series datasets. The goal of this code is to provide the capability to generate time series datasets based on an autoregressive component that can be further customized as needed. 
+Many synthetic time series datasets are based on uniform or normal random number generation that creates data that is independent and identically distributed. This is not necessarily a characteristic that is found in many time series datasets. The goal of this code is to provide the capability to generate very large time series datasets based on an autoregressive component (as as  to establish temporal dependencies) and that that can be further customized as needed. 
 
 The code as shared here is configured to do the following:
 
