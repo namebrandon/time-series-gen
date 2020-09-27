@@ -1,0 +1,18 @@
+#secrets
+secrets.txt
+secret.txt
+data/secrets.txt
+data/secret.txt
+old/secret.txt
+old/secrets.txt
+
+#junk
+queries.txt
+old/
+old/*
+data/*.csv
+
+# Distribution / packaging
+.Python
+.DS_Store
+.idea
