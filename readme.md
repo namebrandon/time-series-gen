@@ -23,6 +23,7 @@ You will need an existing AWS account, a default VPC with internet access, a fun
 ---\ load-data.sh - bash script to load data to ClickHouse
 ---\ requirements.txt - pip requirements
 ---\ secrets.txt - you create this. Two lines, account key on first, secret on second line.
+---\ time-series.conf - ClickHouse conf.d override for storage - points to nvme raid 0 array
 
 ```
 
@@ -42,9 +43,12 @@ You will need an existing AWS account, a default VPC with internet access, a fun
 
 ### Data Import
 1. chmod +x create-db.sh and load-data.sh
-2. launch the ClickHouse client to validate the install (clickhouse-client). Assuming you were launched into the SQL client, "exit" back to the shell prompt. 
-3. ./create-db.sh
-4. Launch a screen session (again, optional but suggested), and ./load-data.sh
+2. Copy the config override to point clickhouse storage to raid 0 array / ```sudo cp time-series.conf /etc/clickhouse-server/conf.d/```
+3. Restart clickhouse server - ```sudo service clickhouse-server restart```
+4. launch the ClickHouse client to validate the install (clickhouse-client). Assuming you were launched into the SQL client, "exit" back to the shell prompt. 
+5. `````./create-db.sh`````
+6. Launch a screen session (again, optional but suggested)
+7. `````./load-data.sh`````
 5. Wait
 
 ## Contributing

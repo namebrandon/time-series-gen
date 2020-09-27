@@ -26,6 +26,7 @@ mount /dev/md0 /mnt/md0
 mdadm --verbose --detail --scan > /etc/mdadm.conf
 echo '/dev/md0 /mnt/md0 ext4 defaults,nofail,discard 0 0' | sudo tee -a /etc/fstab
 chown -R centos:centos /mnt/md0
+mkdir /etc/clickhouse-server/conf.d
 """
 
 
