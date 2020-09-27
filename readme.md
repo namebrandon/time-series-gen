@@ -30,8 +30,11 @@ You will need an existing AWS account, a default VPC with internet access, a fun
 ## Usage
 *Important* - The user data script in launch-ec2.py will assume you have two local NVME disks and will create an RAID 0 array. Unless you know how to configure this for your instance types, it is suggested you stay within the c5ad family of ec2 instance types. 
 
+### Prerequisites
+* An environment is needed to launch the EC2 instance we'll be using for most of this effort. This environment needs Python 3 (this was built / tested with 3.6) and an equivalent pip (check with python3 --version and pip3 --version or pip-3.6 --version). Getting to this point is beyond the scope of the readme, please check with your favorite search enginge on installing Python / pip 3 for your platform.
 ### Data Generation Stage
 1. Clone the repo ```git clone https://github.com/namebrandon/time-series-gen.git```
+2. The only import we need is boto3 for now. You can pip install the requirements.txt which is overkill for this stage, or just pip install boto3. Ensure you are using pip for Python 3 and are targeting your python 3 environment. For me, this required the following ``` pip3 install --upgrade pip && pip3 install boto3 ```
 2. Create secrets.txt with your relevant account in the root of the repo
 3. Update launch-ec2.py with your relevant information (there are account / region specific settings, this will not work out of the box.
 4. execute the launch-ec2.py script and capture the output IP address of the ec2 instance. ```python3 launch-ec2.py```
