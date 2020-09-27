@@ -37,7 +37,7 @@ You will need an existing AWS account, a default VPC with internet access, a fun
 5. ssh into the instance (note that the user will be "centos" unless a different AMI was chosen.
 6. cd to /mnt/md0 and clone this repo once more
 7. using nano or another editor, make any changes needed to gen.py
-8. Launch a screen session (optional, but suggested) and execute gen.py and wait
+8. Launch a screen session (optional, but suggested) and execute gen.py and wait. Data is in data/ in .csv format.
 
 ### Data Import
 1. chmod +x create-db.sh and load-data.sh

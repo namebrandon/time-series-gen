@@ -1,9 +1,7 @@
 import boto3
 import os
 
-dir_path = os.path.realpath('/')
-
-file = open(dir_path+"/"+"secrets.txt", "r")
+file = open("secrets.txt", "r")
 key_id = file.readline().rstrip()
 access_key = file.readline().rstrip()
 file.close()
@@ -29,7 +27,7 @@ chown -R centos:centos /mnt/md0
 #### Configure your relevant information here
 
 ec2_region = 'us-west-2'
-instance_type='c5ad.4xlarge'
+instance_type='c5ad.24xlarge'
 ami_id = 'ami-0a248ce88bcc7bd23' #US-WEST-2 CentOS 7.5 X86_64
 pem_key_name = 'brandon_west_2'
 security_groups = ['uswest2_ssh_only']
