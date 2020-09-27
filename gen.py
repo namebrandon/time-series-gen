@@ -45,20 +45,20 @@ def _gen_df(per_chunk, step, out, i):
                     for i in range(per_chunk)]).astype('datetime64[ns]')
 
     df = pd.DataFrame(index=idx,
-                      data={'LMWI': ts_data_gen(50, 28, 28.6, n_points=per_chunk),
+                      data={'LMWI': ts_data_gen(50, 8, 8.6, n_points=per_chunk),
                             'CJHA': ts_data_gen(150, 11, 18.5, n_points=per_chunk),
                             'BCTD': ts_data_gen(210, 18, 78.5, n_points=per_chunk),
-                            'DNUL': ts_data_gen(1150, 38, 231.35, n_points=per_chunk),
+                            'DNUL': ts_data_gen(1150, 138, 231.35, n_points=per_chunk),
                             'HEQB': ts_data_gen(600, 38, 130.25, n_points=per_chunk),
                             'AOGT': ts_data_gen(450, 28, 220.85, n_points=per_chunk),
-                            'ELHW': ts_data_gen(29, 11, 13.85, n_points=per_chunk),
+                            'ELHW': ts_data_gen(99, 11, 7, n_points=per_chunk),
                             'QIMJ': ts_data_gen(311, 42, 120.85, n_points=per_chunk),
                             'ADFI': ts_data_gen(103, 18, 14.85, n_points=per_chunk),
                             'EIWV': ts_data_gen(227, 24, 35.85, n_points=per_chunk),
-                            'IGXG': ts_data_gen(62, 10, 11.85, n_points=per_chunk),
-                            'HRCS': ts_data_gen(31, 3, 14.85, n_points=per_chunk),
-                            'PLFI': ts_data_gen(49, 12, 12.85, n_points=per_chunk),
-                            'QYUY': ts_data_gen(880, 78, 111.85, n_points=per_chunk),
+                            'IGXG': ts_data_gen(62, 8, 6.85, n_points=per_chunk),
+                            'HRCS': ts_data_gen(31, 3, 11.85, n_points=per_chunk),
+                            'PLFI': ts_data_gen(49, 3, 12.85, n_points=per_chunk),
+                            'QYUY': ts_data_gen(880, 48, 111.85, n_points=per_chunk),
                             'SNUM': ts_data_gen(130, 18, 16.65, n_points=per_chunk),
                             'WRBA': ts_data_gen(1250, 144, 144.45, n_points=per_chunk),
                             'UOFC': ts_data_gen(1510, 188, 224.22, n_points=per_chunk),
@@ -67,8 +67,8 @@ def _gen_df(per_chunk, step, out, i):
     outfile = out + str(i).zfill(4) + ".csv"
     df.to_csv(outfile, header=False)
 
-total = 4000000 #2.5e9
-chunks = 16     # best performance when set to number of cores on system
+total = 2500000000 #2.5e9
+chunks = 96     # best performance when set to number of cores on system
 per_chunk = int(total/chunks)
 step = 's' # each new row moves ahead 1 step as defined here / m=minute, s=second, ms=mili / reference - https://numpy.org/doc/stable/reference/arrays.datetime.html
 output_dir = 'data/'

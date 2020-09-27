@@ -1,10 +1,10 @@
-# Synthetic Time Series Testing with ClickHouse 
+# Synthetic Big Data Time Series Testing with ClickHouse 
 
 Many synthetic time series datasets are based on uniform or normal random number generation that creates data that is independent and identically distributed. This is not necessarily a characteristic that is found in many time series datasets. The goal of this code is to provide the capability to generate very large time series datasets based on an autoregressive component (as to establish temporal dependencies) and that that can be further customized as needed. 
 
 The code as shared here is configured to do the following:
 
-* Generate 2.5 billion rows of true auto-regressive time-series data based on stochastic processes with white noise based error. 
+* Generate 2.5 billion rows of true auto-regressive time-series data a gaussian / white noise based error process. 
 
 * Instantiate an AWS-based ClickHouse environment running CentOS 7.5 to query the data.
 
@@ -38,18 +38,19 @@ You will need an existing AWS account, a default VPC with internet access, a fun
 5. ssh into the instance (note that the user will be "centos" unless a different AMI was chosen.) ``` ssh -i path-to-pem-file/your.pem centos@your-instance-ip```
 6. cd to /mnt/md0 and clone this repo once more (__note__: it may take 10+ minutes for the userdata script to fully execute. Please wait for md0 to appear.) ```git clone https://github.com/namebrandon/time-series-gen.git```
 7. install all pip requirements / ```cd time-series-gen/ && pip3 install -r requirements.txt```
-8. using nano or another editor, make any changes needed to gen.py ```screen -dm bash -c 'python3 gen.py; exec sh'```
-9. Launch a screen session (optional, but suggested) and execute gen.py and wait. Data is in data/ in .csv format. screen
+8. using nano or another editor, make any changes needed to gen.py 
+9. Launch a screen session (optional, but suggested) and execute gen.py and wait. Data is in data/ in .csv format. ```screen -dm bash -c 'python3 gen.py; exec sh'```
+
 
 ### Data Import
 1. From the repo root directory ```chmod +x *.sh```
 2. Copy the config override to point ClickHouse storage to raid 0 array / ```sudo cp time-series.conf /etc/clickhouse-server/conf.d/```
 3. Restart ClickHouse server - ```sudo service clickhouse-server restart```
 You should see a message about a new ClickHouse data directory being created.
-4. launch the ClickHouse client to validate the install (clickhouse-client). Assuming you were launched into the SQL client, "exit" back to the shell prompt. 
+4. launch the ClickHouse client to validate the install ( ```clickhouse-client ```). Assuming you were launched into the SQL client, "exit" back to the shell prompt. 
 5. `````./create-db.sh`````
 6. Launch a screen session (again, optional but suggested)
-7. `````./load-data.sh`````
+7. `````screen -dm bash -c './load-data.sh; exec sh'`````
 5. Wait
 
 ### Query

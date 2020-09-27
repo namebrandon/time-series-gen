@@ -35,7 +35,7 @@ mkdir /etc/clickhouse-server/conf.d
 # ### Configure your relevant information here
 
 ec2_region = 'us-west-2'                # Change accordingly, but note that the AMI ID will change as a result
-instance_type='c5ad.4xlarge'           # stick with the c5ad family or the userdata script may break
+instance_type='c5ad.24xlarge'           # stick with the c5ad family or the userdata script may break
 ami_id = 'ami-0a248ce88bcc7bd23'        # US-WEST-2 CentOS 7.5 X86_64
 pem_key_name = 'brandon_west_2'         # the name of the pem key that already exists and that you wish to use
 security_groups = ['uswest2_ssh_only']  # the NAME of your security group goes here, not SG ID
