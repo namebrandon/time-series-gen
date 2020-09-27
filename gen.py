@@ -67,7 +67,7 @@ def _gen_df(per_chunk, step, out, i):
     outfile = out + str(i).zfill(4) + ".csv"
     df.to_csv(outfile, header=False)
 
-total = 2000000 #2.5e9
+total = 4000000 #2.5e9
 chunks = 16     # best performance when set to number of cores on system
 per_chunk = int(total/chunks)
 step = 's' # each new row moves ahead 1 step as defined here / m=minute, s=second, ms=mili / reference - https://numpy.org/doc/stable/reference/arrays.datetime.html
