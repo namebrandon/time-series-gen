@@ -40,7 +40,7 @@ def _gen_df(per_chunk, step, out, i):
     print("generating df " + str(i) + " with " + str(per_chunk) + " rows..")
 
 
-    start_time = np.datetime64('1990-01-01', 'ns') + np.timedelta64(i * per_chunk, step)
+    start_time = np.datetime64('1949-05-06', 'ns') + np.timedelta64(i * per_chunk, step)
     idx = np.array([(start_time + np.timedelta64(i, step))
                     for i in range(per_chunk)]).astype('datetime64[ns]')
 
@@ -72,7 +72,7 @@ chunks = 96     # best performance when set to number of cores on system
 per_chunk = int(total/chunks)
 step = 's' # each new row moves ahead 1 step as defined here / m=minute, s=second, ms=mili / reference - https://numpy.org/doc/stable/reference/arrays.datetime.html
 output_dir = 'data/'
-start_time = np.datetime64('1990-01-01', 'ns')
+start_time = np.datetime64('1949-05-06', 'ns')
 
 with mp.Pool(mp.cpu_count()) as pool:
     t0 = time.time()
